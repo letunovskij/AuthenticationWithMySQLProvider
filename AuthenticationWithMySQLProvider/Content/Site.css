@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Размеры контейнера Bootstrap для больших дисплеев (-lg)*/
+@media (min-width: 1500px) {
+    .container {
+        width: 1470px;
+    }
+}
