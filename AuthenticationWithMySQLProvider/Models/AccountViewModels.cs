@@ -49,7 +49,7 @@ namespace AuthenticationWithMySQLProvider.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "Эл. почта")]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -57,6 +57,9 @@ namespace AuthenticationWithMySQLProvider.Models
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
+
+        [Display(Name = "ФИО")]
+        public string FullName { get; set; }
 
         [Display(Name = "Запомнить меня")]
         public bool RememberMe { get; set; }
@@ -66,7 +69,7 @@ namespace AuthenticationWithMySQLProvider.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "Эл. почта")]
         public string Email { get; set; }
 
         [Required]
@@ -76,9 +79,13 @@ namespace AuthenticationWithMySQLProvider.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Подтверждение пароля")]
+        [Display(Name = "Подтвердите пароль")]
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "ФИО")]
+        [StringLength(200, ErrorMessage = "Значение не должно превышать 200 символов")]
+        public string FullName { get; set; }
     }
 
     public class ResetPasswordViewModel

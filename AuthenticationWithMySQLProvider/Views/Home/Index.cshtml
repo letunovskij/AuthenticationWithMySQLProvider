@@ -1,3 +1,54 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<AuthenticationWithMySQLProvider.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Список пользователей";
 }
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="row col-lg-6">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Поиск</button>
+                </span>
+                <input type="text" class="form-control" placeholder="Найти..." aria-label="Найти..." name="SearchString">
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-lg-8" style="margin-top:5px;">
+        <table class="table table-bordered table-striped table-hover table-responsive">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApplicationUserInfo.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+            </tr>
+
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.ApplicationUserInfo.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.Email)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
